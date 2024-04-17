@@ -1,0 +1,76 @@
+html {
+    background-color: antiquewhite;
+    padding: 1rem;
+}
+
+body {
+    max-width: 600px;
+    margin: auto;
+}
+
+.stats-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+}
+
+.stats-area > *{
+    flex: 1 1 0px;
+    background-color: rgb(255, 249, 241);
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.results-area{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(255, 249, 241);
+    justify-content: stretch;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.results-area > *{
+    flex: 1 1 0px;
+}
+
+
+.play-area {
+    display: flex;
+}
+
+.game-buttons-container {
+    flex-grow: 1;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.game-buttons-container button {
+    flex: 1 1 0px;
+    height: 100%;
+}
+
+
+.opponent-area{
+    display: flex;
+    background-color: rgb(255, 249, 241);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+#opponent-expression {
+    width: 100px;
+    height: 100px;
+}
+
+#opponent-dialog {
+    flex-shrink: 1;
+}
+
+#opponent-infos, #opponent-fallback{
+    background-color: rgb(255, 249, 241);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    gap: 1rem;
+}

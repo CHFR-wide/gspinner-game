@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gspinner!</title>
+    <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1 id="spin-title">Spin the G!</h1>
+    <p>Glorb will spin from 1 to 20 times, try to predict when she'll stop as closely as possible!</p>
+    <p>If she stops before you make your prediction, you will automatically lose.</p>
+    <p>How far can you push your luck? Find out now!</p>
+
+    <div class="results-area">
+        <p>Total spins: <span id="spin-actual"></span> <span id="round-result"></span></p>
+    </div>
+
+    <div class="stats-area">
+        <div>
+            <h2>You</h2>
+            <p>Prediction: <span id="spin-prediction"></span></p>
+            <p class="versus-ai-mode">Score: <span id="player-score"></span> / <span class="score-target"></span></p>
+        </div>
+        <div id="opponent-stats" class="versus-ai-mode">
+            <h2 id="title-opponent-name">Opponent stats</h2>
+            <p>Prediction: <span id="opponent-spin-prediction"></span></p>
+            <p>Score: <span id="opponent-score"></span> / <span class="score-target"></span></p>
+        </div>
+    </div>
+
+
+    <div class="play-area">
+        <div id="img-container"></div>
+        <div id="game-in-progress-area" class="game-buttons-container">
+            <button id="btn-spin">Spin the G!</button>
+            <button id="btn-predict">She'll stop now!</button>
+        </div>
+        <div id="game-over-area" class="game-buttons-container">
+            <button id="btn-startGame">Start another game</button>
+        </div>
+    </div>
+
+    <p id="game-result"></p>
+
+    <div class="versus-ai-mode">
+        <div class="opponent-area">
+            <img alt="opponent-expression" id="opponent-expression" />
+            <p id="opponent-dialog"></p>
+        </div>
+    </div>
+
+
+    <div>
+        <p>Choose an opponent :</p>
+        <button id="btn-prev-opponent">Previous</button>
+        <button id="btn-next-opponent">Next</button>
+        <div id="opponent-infos">
+            <h2 id="opponent-name"></h2>
+
+            <b>Playstyle:</b>
+            <p id="opponent-playstyle"></p>
+            <b>Passive abilities:</b>
+            <p id="opponent-ability-passive"></p>
+            <b>Active abilities:</b>
+            <p id="opponent-ability-active"></p>
+        </div>
+        <div id="opponent-fallback">
+            <p>No opponent</p>
+            <p>Enjoy some casual play.</p>
+        </div>
+    </div>
+
+    <p><a href="https://t.bilibili.com/918044981755641861" target="_blank" rel="noopener noreferrer">Gif credit</a></p>
+    <p>Play pocket mirror.</p>
+
+
+</body>
+
+</html>
