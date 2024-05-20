@@ -200,10 +200,10 @@ class FletaAI extends OpponentState {
                 return;
         }
 
-        this.ui.say(dialog, this.emotions.indexOf(emotion));
+        this.ui.say(dialog, this.faces.indexOf(emotion));
     }
 
-    emotions = [
+    faces = [
         'angry',
         'angry2',
         'angry3',

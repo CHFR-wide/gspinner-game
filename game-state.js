@@ -47,6 +47,7 @@ class GameState {
         }
 
         this.ui.setOpponentInfos(this.getOpponent());
+        this.ui.configureOpponentFaces(this.getOpponent())
         this.startGame();
     }
 

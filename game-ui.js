@@ -198,6 +198,20 @@ class GameUi {
                 return 'You lose... make up your mind faster next time.';
         }
     }
+
+    configureOpponentFaces(opponent) {
+        const faces = opponent.faces;
+        const input = document.getElementById('debug-opponent-face');
+        input.innerHTML = "";
+
+        for (let i in faces) {
+            console.log(faces)
+            const option = document.createElement('option');
+            option.value = i;
+            option.innerText = faces[i]
+            input.appendChild(option)
+        }
+    }
 }
 
 const gNames = [

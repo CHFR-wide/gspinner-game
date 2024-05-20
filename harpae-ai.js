@@ -197,8 +197,23 @@ class HarpaeAI extends OpponentState {
                 return;
         }
 
-        this.ui.say(dialog, this.getEmotionImage(emotion));
+        this.ui.say(dialog, this.faces.indexOf(emotion));
     }
+
+    faces = [
+        'frown',
+        'happy',
+        'ominous',
+        'ominous2',
+        'pained',
+        'pained2',
+        'pained3',
+        'relaxed',
+        'resolved',
+        'smile',
+        'smile2',
+        'surprised',
+    ]
 }
 
 export default HarpaeAI;
