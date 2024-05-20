@@ -164,7 +164,7 @@ class GameState {
             let actionTiming = this.counter + this.animationLength / 2;
 
             if (this.getOpponent() instanceof LisetteAi) {
-                actionTiming = this.counter;
+                actionTiming = this.counter - 1;
             }
 
             if (actionTiming % this.animationLength === 0) {
