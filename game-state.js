@@ -160,7 +160,14 @@ class GameState {
         const currentTurn = Math.ceil(this.counter / this.animationLength)
 
         if (this.getOpponent()) {
-            if ((this.counter + this.animationLength / 2) % this.animationLength === 0) {
+
+            let actionTiming = this.counter + this.animationLength / 2;
+
+            if (this.getOpponent() instanceof LisetteAi) {
+                actionTiming = this.counter;
+            }
+
+            if (actionTiming % this.animationLength === 0) {
                 this.getOpponent().onActionOpportunity(currentTurn, this.player);
             }
 
