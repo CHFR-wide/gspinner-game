@@ -31,18 +31,17 @@
             <p>Score: <span id="opponent-score"></span> / <span class="score-target"></span></p>
         </div>
     </div>
-    <div>
+    <div class="versus-ai-mode">
         <div class="progress-bg">
-            <div class="opponent-progress" style="width:50%">
-                <div class="opponent-pin"></div>
+            <div id="opponent-progress">
+                <div class="opponent-pin" id="enemy-sprite"></div>
             </div>
-            <div class="progress" style="width:75%">
+            <div id="player-progress">
                 <div class="player-pin"></div>
             </div>
             <div class="progress-goal"></div>
         </div> 
     </div>
-    
     
     <div class="play-area">
         <div class="g-spin" id="g-spin"></div>

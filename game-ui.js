@@ -35,6 +35,10 @@ class GameUi {
 
     versusAiElements = document.getElementsByClassName('versus-ai-mode')
 
+    playerScoreProgress = document.getElementById('player-progress')
+    opponentScoreProgress = document.getElementById('opponent-progress')
+    enemySprite = document.getElementById('enemy-sprite')
+
     endGame(status) {
         this.gameInProgressArea.style.display = 'none';
         this.gameOverArea.style.display = 'flex';
@@ -59,6 +63,7 @@ class GameUi {
     }
 
     startGame() {
+        this.resetScore();
         this.gameInProgressArea.style.display = 'flex';
         this.gameOverArea.style.display = 'none';
         this.gameResult.style.display = 'none';
@@ -79,7 +84,12 @@ class GameUi {
         }, 500);
     }
 
+    resetScore() {
+        this.resetProgress();
+    }
+
     setOpponentInfos(opponent) {
+        this.resetScore();
         if (opponent === null) {
             this.opponentInfosDiv.style.display = 'none';
             this.opponentFallbackDiv.style.display = 'block';
@@ -89,8 +99,17 @@ class GameUi {
             }
         }
         else {
+
+
+
             this.opponentInfosDiv.style.display = 'block';
             this.opponentFallbackDiv.style.display = 'none';
+
+            const spriteInfos = opponent.spriteInfos;
+            this.enemySprite.style.backgroundImage = `url('./imgs/opponent-sprites/${spriteInfos.name}.png')`;
+            this.enemySprite.style.backgroundSize = '100px';
+            this.enemySprite.style.width = '50px';
+            this.enemySprite.style.height = spriteInfos.height * 100 / spriteInfos.width / 2 + 'px';
 
             this.opponentName.innerText = opponent.infos.name
             this.titleOpponentName.innerText = opponent.infos.name
@@ -133,6 +152,19 @@ class GameUi {
 
     resetTitle() {
         this.title.innerText = 'Spin the G!';
+    }
+
+    resetProgress() {
+        this.setScoreProgress({player: '0%', opponent: '0%'});
+    }
+
+    setScoreProgress({player, opponent}) {
+        if (player) {
+            this.playerScoreProgress.style.width = player;
+        }
+        if (opponent) {
+            this.opponentScoreProgress.style.width = opponent;
+        }
     }
 
     endRound(actualLoops, score) {

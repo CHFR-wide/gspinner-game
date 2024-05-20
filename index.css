@@ -76,25 +76,26 @@ body {
     gap: 1rem;
 }
 
-.opponent-progress {
+#opponent-progress {
+    width: 0%;
     position: absolute;
     height: 100%;
     background: repeating-linear-gradient(45deg,
-            #698aff,
-            #698aff 10px,
-            #567bff 10px,
-            #567bff 20px);
+            #ff9169,
+            #ff9169 10px,
+            #ff6f56 10px,
+            #ff6f56 20px);
     background-position: 0 100%;
     background-size: calc(20px/sin(45deg)) 100%;
-    animation: gradient 15s infinite;
+    animation: gradient 2s infinite;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 
-    transition: width 1s cubic-bezier();
+    transition: width 1s ease-in-out;
 }
 
-.progress {
-
+#player-progress {
+    width: 0%;
     height: 100%;
     background: repeating-linear-gradient(45deg,
             #698aff,
@@ -103,12 +104,12 @@ body {
             #567bff 20px);
     background-position: 0 100%;
     background-size: calc(20px/sin(45deg)) 100%;
-    animation: gradient 15s infinite;
+    animation: gradient 2s infinite;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     position: relative;
 
-    transition: width 1s cubic-bezier();
+    transition: width 1s ease-in-out;
 }
 
 @keyframes gradient {
@@ -117,14 +118,14 @@ body {
     }
 
     100% {
-        background-position: 100% 0;
+        background-position: calc(20px/sin(45deg)) 0;
     }
 }
 
 .progress-bg {
     background-color: rgb(203, 203, 203);
     height: 10px;
-    margin: 50px 0;
+    margin: 75px 30px;
     position: relative;
 }
 
@@ -132,29 +133,27 @@ body {
     position: absolute;
     width: 0px;
     height: 0px;
-    bottom: 10px;
+    top: 10px;
     right: -10px;
     border: 10px solid transparent;
     border-top: 17px solid #737373;
+    transform: rotate(180deg);
 }
 
 .opponent-pin {
     position: absolute;
     width: 0px;
     height: 0px;
-    top: 10px;
-    transform: rotate(180deg);
-    right: -10px;
-    border: 10px solid transparent;
-    border-top: 17px solid #ff1010;
+    bottom: 15px;
+    right: -25px;
 }
 
 .progress-goal {
     position: absolute;
     right: 0;
-    bottom: -15px;
+    bottom: -35px;
     width: 20px;
-    height: 40px;
+    height: 80px;
 
     background:
         repeating-conic-gradient(#494949 0% 25%, white 0% 50%) 50% / 20px 20px
@@ -164,4 +163,13 @@ body {
     background: url('./imgs/gspin-spritesheet.png');
     width: 93px;
     height: 88px;
+}
+
+#enemy-sprite {
+    animation: enemy-anim 1s steps(2) infinite;
+}
+
+@keyframes enemy-anim {
+    from {background-position: 0 0;}
+    to {background-position: -100px 0;}
 }

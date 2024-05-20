@@ -22,6 +22,12 @@ class HarpaeAI extends OpponentState {
         `
     }
 
+    spriteInfos = {
+        name: 'harpae',
+        width: 364,
+        height: 528,
+    }
+
     resetNewTurn() {
         const isCloseToWinning = this.score >= SCORE_TARGET - 40;
 

@@ -88,6 +88,11 @@ class GameState {
 
             this.getOpponent().onScored(opponentScore);
             this.scorePlayers(playerScore, opponentScore);
+
+            this.ui.setScoreProgress({
+                player: playerScore/SCORE_TARGET*100 + '%',
+                opponent: opponentScore/SCORE_TARGET*100 + '%'
+            })
         }
 
         this.ui.endRound(

@@ -18,6 +18,12 @@ class FletaAI extends OpponentState {
         `
     }
 
+    spriteInfos = {
+        name: 'fleta',
+        width: 408,
+        height: 508,
+    }
+
 
     abilityDuration = 2000;
     abilityCooldownMs = 5000;
