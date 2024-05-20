@@ -40,9 +40,9 @@
                 <div class="player-pin"></div>
             </div>
             <div class="progress-goal"></div>
-        </div> 
+        </div>
     </div>
-    
+
     <div class="play-area">
         <div class="g-spin" id="g-spin"></div>
         <div id="game-in-progress-area" class="game-buttons-container">
@@ -57,12 +57,12 @@
     <p id="game-result"></p>
 
 
-    <div>
+    <div id="debug-menu" style="display: none;">
         <h2>Debug menu</h2>
         <div>Opponent face <select id="debug-opponent-face"></select></div>
         </select>
     </div>
-    
+
     <div class="versus-ai-mode">
         <div class="opponent-area">
             <div id="opponent-expression"></div>
@@ -94,6 +94,13 @@
     <p><a href="https://t.bilibili.com/918044981755641861" target="_blank" rel="noopener noreferrer">Gif credit</a></p>
     <p>Play pocket mirror.</p>
 
+    <script>
+        function toggleDebug() {
+            const debugMenu = document.getElementById('debug-menu');
+
+            debugMenu.style.display = debugMenu.style.display == 'none' ? 'block' : 'none';
+        }
+    </script>
 
 </body>
 
