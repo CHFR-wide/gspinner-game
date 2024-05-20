@@ -15,8 +15,8 @@ class LisetteAi extends OpponentState {
         `;
         this.infos.abilityPassive = `
         <i>Red light green light:</i> Lisette does not make any calls, instead, she will slowly advance every time
-        G spins. Once you make a call, she cannot move anymore.<br>
-        <i>Frightened stupor:</i> Your movements are hindered you get less points than usual.
+        G spins. Once you make a call, she cannot move anymore. The more you wait, the faster she advances!<br>
+        <i>Frightened stupor:</i> You don't suffer a penalty when you miss a call, but you also get less points than usual.
         `
 
         this.uiData = {
@@ -26,7 +26,7 @@ class LisetteAi extends OpponentState {
                 height: 556,
             },
             faces: {
-                url: './imgs/opponent-faces/fleta.png',
+                url: './imgs/opponent-faces/lisette.png',
             }
         }
     }
@@ -85,25 +85,25 @@ class LisetteAi extends OpponentState {
         let dialog;
         let emotion;
 
-        if (player.score < 20) return;
+        if (player.score < 30) return;
 
         const scoreDifference = player.score - this.score;
 
         if (scoreDifference > 25) {
             dialog = '........';
-            emotion = '';
+            emotion = 'clouded';
         } else if (scoreDifference > 20) {
             dialog = '...be careful not to trip now';
-            emotion = '';
+            emotion = 'smirk';
         } else if (scoreDifference > 15) {
             dialog = '...hehehe, hehehehe...';
-            emotion = '';
+            emotion = 'crazy';
         } else if (scoreDifference > 10) {
             dialog = 'close, close, close, so close...';
-            emotion = '';
+            emotion = 'mad';
         } else {
             dialog = 'So close... just a few more steps and I can finally be set free...';
-            emotion = '';
+            emotion = 'crazy2';
         }
 
         this.ui.say(dialog, this.faces.indexOf(emotion));
@@ -116,23 +116,19 @@ class LisetteAi extends OpponentState {
         switch (dialogEvent) {
             case DIALOG_EVENT.INITIAL_TAUNT:
                 dialog = '...hehe... heh';
-                emotion = '';
-                break;
-            case DIALOG_EVENT.START_ROUND:
-                dialog = '...'
-                emotion = '';
+                emotion = 'neutral-pained';
                 break;
             case DIALOG_EVENT.PLAYER_WIN:
                 dialog = `
                 ...
                 `
-                emotion = 'annoyed3';
+                emotion = 'neutral';
                 break;
             case DIALOG_EVENT.PLAYER_LOSE:
                 dialog = `
                 Caught... you...
                 `
-                emotion = '';
+                emotion = 'ominous';
                 break;
             default:
                 return;
@@ -142,21 +138,17 @@ class LisetteAi extends OpponentState {
     }
 
     faces = [
-        'angry',
-        'angry2',
-        'angry3',
-        'annoyed',
-        'annoyed2',
-        'annoyed3',
-        'frown',
-        'happy',
-        'happy2',
         'neutral',
+        'frown',
+        'clouded',
+        'smirk',
+        'crazy',
+        'crazy2',
+        'mad',
+        'mad2',
         'ominous',
-        'ominous2',
-        'proud',
-        'smug',
-        'surprised',
+        'crazy3',
+        'neutral-pained',
     ]
 }
 

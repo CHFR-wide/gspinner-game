@@ -123,7 +123,7 @@ class GameState {
         this.ui.startGame();
 
         if (this.getOpponent() instanceof LisetteAi) {
-            this.player.addToScore(15);
+            this.player.addToScore(20);
         }
     }
 
@@ -182,14 +182,15 @@ class GameState {
     }
 
     getScore(prediction) {
-        if (prediction === null) {
-            return GRADE.MISS;
-        }
+
 
         if (this.getOpponent() instanceof LisetteAi) {
+
+            if (prediction === null) return 0
+
             switch (this.maxLoops - prediction) {
                 case 0:
-                    return 30
+                    return 35
                 case 1:
                     return 25
                 case 2:
@@ -206,6 +207,10 @@ class GameState {
                 default:
                     return GRADE.FAIL
             }
+        }
+
+        if (prediction === null) {
+            return GRADE.MISS;
         }
 
         switch (this.maxLoops - prediction) {
