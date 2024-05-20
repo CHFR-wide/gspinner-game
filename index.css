@@ -60,8 +60,10 @@ body {
 }
 
 #opponent-expression {
-    width: 100px;
-    height: 100px;
+    flex-shrink: 0;
+    background-image: none;
+    width: 150px;
+    height: 150px;
 }
 
 #opponent-dialog {

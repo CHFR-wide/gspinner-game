@@ -97,10 +97,6 @@ class FletaAI extends OpponentState {
         this.abilityLocked = false;
     }
 
-    getEmotionImage(value) {
-        return `./imgs/opponent-fleta/${value}.png`;
-    }
-
     say(dialogEvent) {
         let dialog;
         let emotion;
@@ -204,8 +200,26 @@ class FletaAI extends OpponentState {
                 return;
         }
 
-        this.ui.say(dialog, this.getEmotionImage(emotion));
+        this.ui.say(dialog, this.emotions.indexOf(emotion));
     }
+
+    emotions = [
+        'angry',
+        'angry2',
+        'angry3',
+        'annoyed',
+        'annoyed2',
+        'annoyed3',
+        'frown',
+        'happy',
+        'happy2',
+        'neutral',
+        'ominous',
+        'ominous2',
+        'proud',
+        'smug',
+        'surprised',
+    ]
 }
 
 export default FletaAI;

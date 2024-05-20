@@ -21,9 +21,9 @@ class OpponentUi {
         this.opponentScore.innerText = value
     }
 
-    say(dialog, image) {
+    say(dialog, emotionIndex) {
         this.opponentDialog.innerHTML = dialog;
-        this.opponentExpression.src = image;
+        this.opponentExpression.style.backgroundPositionX = -150 * emotionIndex + 'px';
     }
 }
 

@@ -39,6 +39,8 @@ class GameUi {
     opponentScoreProgress = document.getElementById('opponent-progress')
     enemySprite = document.getElementById('enemy-sprite')
 
+    opponentExpression = document.getElementById('opponent-expression');
+
     endGame(status) {
         this.gameInProgressArea.style.display = 'none';
         this.gameOverArea.style.display = 'flex';
@@ -116,6 +118,8 @@ class GameUi {
             this.opponentPlaystyle.innerHTML = opponent.infos.playStyle
             this.opponentAbilityPassive.innerHTML = opponent.infos.abilityPassive ?? 'None'
             this.opponentAvilityActive.innerHTML = opponent.infos.abilityActive ?? 'None'
+
+            this.opponentExpression.style.backgroundImage = `url('/imgs/opponent-faces/${opponent.infos.name.toLowerCase()}.png')`
 
             for (const e of this.versusAiElements) {
                 e.style.display = 'block'

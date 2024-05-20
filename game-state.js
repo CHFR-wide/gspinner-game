@@ -90,8 +90,8 @@ class GameState {
             this.scorePlayers(playerScore, opponentScore);
 
             this.ui.setScoreProgress({
-                player: playerScore/SCORE_TARGET*100 + '%',
-                opponent: opponentScore/SCORE_TARGET*100 + '%'
+                player: Math.min(this.player.score/SCORE_TARGET*100, 100) + '%',
+                opponent: Math.min(this.getOpponent().score/SCORE_TARGET*100, 100) + '%'
             })
         }
 
