@@ -23,12 +23,10 @@
         <div>
             <h2>You</h2>
             <p>Prediction: <span id="spin-prediction"></span></p>
-            <p class="versus-ai-mode">Score: <span id="player-score"></span> / <span class="score-target"></span></p>
         </div>
         <div id="opponent-stats" class="versus-ai-mode">
             <h2 id="title-opponent-name">Opponent stats</h2>
             <p>Prediction: <span id="opponent-spin-prediction"></span></p>
-            <p>Score: <span id="opponent-score"></span> / <span class="score-target"></span></p>
         </div>
     </div>
     <div class="versus-ai-mode">
@@ -59,8 +57,13 @@
 
     <div id="debug-menu" style="display: none;">
         <h2>Debug menu</h2>
-        <div>Opponent face <select id="debug-opponent-face"></select></div>
-        </select>
+        <div class="versus-ai-mode">Opponent face <select id="debug-opponent-face"></select></div>
+        <div>
+            <div>Your prediction: <input id="debug-fake-round-player-prediction" type="number" value="0"> </div>
+            <div class="versus-ai-mode">Opponent prediction: <input id="debug-fake-round-opponent-prediction" type="number" value="0"></div>
+            <div>Real spins: <input id="debug-fake-round-real-spins" type="number" value="0"></div>
+            <div><input type="button" value="Simulate a fake round" id="debug-fake-round-submit"> </div>
+        </div>
     </div>
 
     <div class="versus-ai-mode">

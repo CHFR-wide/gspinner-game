@@ -1,6 +1,5 @@
 class OpponentUi {
     constructor() {
-        this.opponentScore.innerText = 0;
     }
 
     btnPredict = document.getElementById('btn-predict');
@@ -15,10 +14,6 @@ class OpponentUi {
 
     setPredictionText(value) {
         this.spinPrediction.innerText = value
-    }
-
-    setScore(value) {
-        this.opponentScore.innerText = value
     }
 
     say(dialog, emotionIndex) {

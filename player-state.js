@@ -8,7 +8,6 @@ class PlayerState {
     resetGame() {
         this.score = 0;
         this.prediction = null;
-        this.ui.setScore(this.score);
         this.ui.setPredictionText(this.prediction);
     }
 
@@ -33,9 +32,7 @@ class PlayerState {
     }
 
     addToScore(value) {
-        this.score += value;
-
-        this.ui.setScore(this.score);
+        this.score = Math.max(this.score + value, 0);
     }
 }
 

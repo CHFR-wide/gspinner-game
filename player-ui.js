@@ -1,6 +1,5 @@
 class PlayerUi {
     constructor() {
-        this.playerScore.innerText = 0;
     }
 
     btnSpin = document.getElementById('btn-spin');
@@ -19,10 +18,6 @@ class PlayerUi {
 
     setPredictionText(value) {
         this.spinPrediction.innerText = value
-    }
-
-    setScore(value) {
-        this.playerScore.innerText = value
     }
 }
 

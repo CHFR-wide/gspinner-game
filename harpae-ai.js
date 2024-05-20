@@ -20,12 +20,17 @@ class HarpaeAI extends OpponentState {
         <i>Brittle protector:</i> If harpae fails to fold before G stops spinning,
         she suffers four times the usual penalty.
         `
-    }
 
-    spriteInfos = {
-        name: 'harpae',
-        width: 364,
-        height: 528,
+        this.uiData = {
+            progressSprite: {
+                url: '/imgs/opponent-sprites/harpae.png',
+                width: 364,
+                height: 528,
+            },
+            faces: {
+                url: '/imgs/opponent-faces/harpae.png',
+            }
+        }
     }
 
     resetNewTurn() {

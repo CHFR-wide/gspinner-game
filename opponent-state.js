@@ -20,6 +20,17 @@ class OpponentState extends PlayerState {
         abilityActive: null,
     }
 
+    uiData = {
+        progressSprite: {
+            url: '',
+            width: 0,
+            height: 0,
+        },
+        faces: {
+            url: '',
+        }
+    }
+
     resetGame() {
         super.resetGame()
         this.say(DIALOG_EVENT.INITIAL_TAUNT);

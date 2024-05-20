@@ -107,11 +107,11 @@ class GameUi {
             this.opponentInfosDiv.style.display = 'block';
             this.opponentFallbackDiv.style.display = 'none';
 
-            const spriteInfos = opponent.spriteInfos;
-            this.enemySprite.style.backgroundImage = `url('./imgs/opponent-sprites/${spriteInfos.name}.png')`;
+            const sprite = opponent.uiData.progressSprite;
+            this.enemySprite.style.backgroundImage = `url('${sprite.url}')`;
             this.enemySprite.style.backgroundSize = '100px';
             this.enemySprite.style.width = '50px';
-            this.enemySprite.style.height = spriteInfos.height * 100 / spriteInfos.width / 2 + 'px';
+            this.enemySprite.style.height = sprite.height * 100 / sprite.width / 2 + 'px';
 
             this.opponentName.innerText = opponent.infos.name
             this.titleOpponentName.innerText = opponent.infos.name
@@ -119,7 +119,8 @@ class GameUi {
             this.opponentAbilityPassive.innerHTML = opponent.infos.abilityPassive ?? 'None'
             this.opponentAvilityActive.innerHTML = opponent.infos.abilityActive ?? 'None'
 
-            this.opponentExpression.style.backgroundImage = `url('/imgs/opponent-faces/${opponent.infos.name.toLowerCase()}.png')`
+            const faces = opponent.uiData.faces;
+            this.opponentExpression.style.backgroundImage = `url('${faces.url}')`
 
             for (const e of this.versusAiElements) {
                 e.style.display = 'block'
@@ -200,12 +201,13 @@ class GameUi {
     }
 
     configureOpponentFaces(opponent) {
+        if (!opponent) return;
+
         const faces = opponent.faces;
         const input = document.getElementById('debug-opponent-face');
         input.innerHTML = "";
 
         for (let i in faces) {
-            console.log(faces)
             const option = document.createElement('option');
             option.value = i;
             option.innerText = faces[i]

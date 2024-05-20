@@ -3,7 +3,7 @@ import OpponentState from "./opponent-state.js";
 
 class FletaAI extends OpponentState {
 
-    constructor () {
+    constructor() {
         super();
         this.onEndAbility = this.onEndAbility.bind(this);
         this.onEndAbilityCooldown = this.onEndAbilityCooldown.bind(this);
@@ -16,12 +16,17 @@ class FletaAI extends OpponentState {
         <i>Impatience:</i> Fleta blocks your ability to make a call for two seconds.<br>
         The more you wait to make your decision, the more likely she is to trigger this ability.
         `
-    }
 
-    spriteInfos = {
-        name: 'fleta',
-        width: 408,
-        height: 508,
+        this.uiData = {
+            progressSprite: {
+                url: '/imgs/opponent-sprites/fleta.png',
+                width: 408,
+                height: 508,
+            },
+            faces: {
+                url: '/imgs/opponent-faces/fleta.png',
+            }
+        }
     }
 
 

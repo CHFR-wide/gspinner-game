@@ -16,6 +16,7 @@ class GameState {
         this.spinG = this.spinG.bind(this);
         this.switchOpponent = this.switchOpponent.bind(this);
         this.getOpponent = this.getOpponent.bind(this);
+        this.endRound = this.endRound.bind(this);
 
         this.init();
     }
