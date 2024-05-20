@@ -42,7 +42,7 @@ class LisetteAi extends OpponentState {
         if (player.score > 0 && player.prediction == null) {
 
             const scoreDifference = player.score - this.score;
-            const scoreIncrement = Math.min(Math.ceil(currentTurn / 4), Math.max(scoreDifference - 5, 1));
+            const scoreIncrement = Math.min(Math.ceil(currentTurn / 3), Math.max(scoreDifference - 5, 1));
 
             this.addToScore(scoreIncrement, true);
 
@@ -84,8 +84,6 @@ class LisetteAi extends OpponentState {
     sayDuringTurn(player) {
         let dialog;
         let emotion;
-
-        if (player.score < 30) return;
 
         const scoreDifference = player.score - this.score;
 

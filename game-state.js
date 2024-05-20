@@ -123,7 +123,7 @@ class GameState {
         this.ui.startGame();
 
         if (this.getOpponent() instanceof LisetteAi) {
-            this.player.addToScore(20);
+            this.player.addToScore(21);
         }
     }
 
