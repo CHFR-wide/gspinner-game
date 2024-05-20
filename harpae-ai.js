@@ -23,12 +23,12 @@ class HarpaeAI extends OpponentState {
 
         this.uiData = {
             progressSprite: {
-                url: '/imgs/opponent-sprites/harpae.png',
+                url: './imgs/opponent-sprites/harpae.png',
                 width: 364,
                 height: 528,
             },
             faces: {
-                url: '/imgs/opponent-faces/harpae.png',
+                url: './imgs/opponent-faces/harpae.png',
             }
         }
     }

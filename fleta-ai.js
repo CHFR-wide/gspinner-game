@@ -19,12 +19,12 @@ class FletaAI extends OpponentState {
 
         this.uiData = {
             progressSprite: {
-                url: '/imgs/opponent-sprites/fleta.png',
+                url: './imgs/opponent-sprites/fleta.png',
                 width: 408,
                 height: 508,
             },
             faces: {
-                url: '/imgs/opponent-faces/fleta.png',
+                url: './imgs/opponent-faces/fleta.png',
             }
         }
     }
