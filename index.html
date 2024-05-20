@@ -31,10 +31,21 @@
             <p>Score: <span id="opponent-score"></span> / <span class="score-target"></span></p>
         </div>
     </div>
-
-
+    <div>
+        <div class="progress-bg">
+            <div class="opponent-progress" style="width:50%">
+                <div class="opponent-pin"></div>
+            </div>
+            <div class="progress" style="width:75%">
+                <div class="player-pin"></div>
+            </div>
+            <div class="progress-goal"></div>
+        </div> 
+    </div>
+    
+    
     <div class="play-area">
-        <div id="img-container"></div>
+        <div class="g-spin" id="g-spin"></div>
         <div id="game-in-progress-area" class="game-buttons-container">
             <button id="btn-spin">Spin the G!</button>
             <button id="btn-predict">She'll stop now!</button>

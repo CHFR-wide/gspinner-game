@@ -8,8 +8,6 @@ class GameUi {
     }
 
     animationLength;
-    imageElements = [];
-    imgsContainer = document.getElementById('img-container');
     title = document.getElementById('spin-title');
     spinPrediction = document.getElementById('spin-prediction');
     spinActual = document.getElementById('spin-actual');
@@ -20,6 +18,8 @@ class GameUi {
     scoreTargets = document.getElementsByClassName('score-target');
     gameInProgressArea = document.getElementById('game-in-progress-area');
     gameOverArea = document.getElementById('game-over-area');
+
+    gspinSpritesheet = document.getElementById('g-spin');
     
     nextOpponentBtn = document.getElementById('btn-next-opponent');
     prevOpponentBtn = document.getElementById('btn-prev-opponent');
@@ -66,7 +66,6 @@ class GameUi {
     }
 
     firstLoad(scoreTarget) {
-        this.initImageElements();
         this.btnPredict.disabled = true;
         this.gameOverArea.style.display = 'none';
         for (const e of this.scoreTargets) {
@@ -105,16 +104,6 @@ class GameUi {
         }
     }
 
-    initImageElements() {
-        for (let i = 0; i < this.animationLength; i++) {
-            const newImg = document.createElement('img')
-
-            newImg.src = `./imgs/gspin-animation/frame_${i.toString().padStart(2, '0')}_delay-0.1s.png`;
-            this.imgsContainer.appendChild(newImg);
-            this.imageElements.push(newImg);
-        }
-    }
-
     startRound() {
         this.setSwitchOpponentLock(true);
         this.resetRoundInfos();
@@ -127,20 +116,13 @@ class GameUi {
         this.spinActual.innerText = '';
         this.roundResult.innerText = '';
 
-        this.imageElements.forEach(element => {
-            element.style.display = 'none';
-        });
-
-        this.imageElements[0].style.display = 'block';
-
 
     }
 
     spinG(counter) {
         let currentImage = counter % this.animationLength
 
-        this.imageElements.at(currentImage).style.display = 'block';
-        this.imageElements.at(currentImage - 1).style.display = 'none';
+        this.gspinSpritesheet.style.backgroundPositionX = `-${currentImage*93}px`;
     }
 
     setSpinningTitle() {
