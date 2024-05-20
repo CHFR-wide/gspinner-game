@@ -65,7 +65,6 @@ class GameUi {
     }
 
     startGame() {
-        this.resetScore();
         this.gameInProgressArea.style.display = 'flex';
         this.gameOverArea.style.display = 'none';
         this.gameResult.style.display = 'none';
@@ -86,12 +85,7 @@ class GameUi {
         }, 500);
     }
 
-    resetScore() {
-        this.resetProgress();
-    }
-
     setOpponentInfos(opponent) {
-        this.resetScore();
         if (opponent === null) {
             this.opponentInfosDiv.style.display = 'none';
             this.opponentFallbackDiv.style.display = 'block';
@@ -157,19 +151,6 @@ class GameUi {
 
     resetTitle() {
         this.title.innerText = 'Spin the G!';
-    }
-
-    resetProgress() {
-        this.setScoreProgress({player: '0%', opponent: '0%'});
-    }
-
-    setScoreProgress({player, opponent}) {
-        if (player) {
-            this.playerScoreProgress.style.width = player;
-        }
-        if (opponent) {
-            this.opponentScoreProgress.style.width = opponent;
-        }
     }
 
     endRound(actualLoops, score) {

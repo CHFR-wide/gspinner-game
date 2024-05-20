@@ -1,3 +1,4 @@
+import { SCORE_TARGET } from "./game-state.js";
 import PlayerUi from "./player-ui.js";
 
 class PlayerState {
@@ -6,7 +7,7 @@ class PlayerState {
     prediction = null;
 
     resetGame() {
-        this.score = 0;
+        this.setScore(0);
         this.prediction = null;
         this.ui.setPredictionText(this.prediction);
     }
@@ -33,6 +34,14 @@ class PlayerState {
 
     addToScore(value) {
         this.score = Math.max(this.score + value, 0);
+
+        this.ui.setScoreProgress(Math.min(this.score / SCORE_TARGET * 100, 100) + '%')
+    }
+
+    setScore(value) {
+        this.score = value;
+
+        this.ui.setScoreProgress(Math.min(this.score / SCORE_TARGET * 100, 100) + '%')
     }
 }
 

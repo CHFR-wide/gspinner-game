@@ -5,7 +5,8 @@ class PlayerUi {
     btnSpin = document.getElementById('btn-spin');
     btnPredict = document.getElementById('btn-predict');
     spinPrediction = document.getElementById('spin-prediction');
-    playerScore = document.getElementById('player-score');
+
+    scoreProgress = document.getElementById('player-progress')
 
     setLockSpin(value) {
         this.btnSpin.disabled = value;
@@ -18,6 +19,10 @@ class PlayerUi {
 
     setPredictionText(value) {
         this.spinPrediction.innerText = value
+    }
+
+    setScoreProgress(value) {
+        this.scoreProgress.style.width = value;
     }
 }
 

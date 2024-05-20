@@ -3,6 +3,7 @@ import FletaAI from "./fleta-ai.js";
 import GameUi from "./game-ui.js";
 import { GRADE } from "./grade-const.js";
 import HarpaeAI from "./harpae-ai.js";
+import LisetteAi from "./lisette-ai.js";
 import PlayerState from "./player-state.js";
 
 export const SCORE_TARGET = 200;
@@ -28,6 +29,7 @@ class GameState {
         null,
         new FletaAI(),
         new HarpaeAI(),
+        new LisetteAi(),
     ];
     currentOpponent = 0;
     counter = 0;
@@ -40,6 +42,11 @@ class GameState {
         this.ui.firstLoad(this.scoreTarget);
     }
 
+    lisetteHasWon() {
+        return this.getOpponent() instanceof LisetteAi
+        && this.getOpponent().score > 0
+        && this.getOpponent().score >= this.player.score
+    }
 
     switchOpponent(offset) {
         this.currentOpponent = (this.currentOpponent + offset) % this.opponents.length;
@@ -90,11 +97,6 @@ class GameState {
 
             this.getOpponent().onScored(opponentScore);
             this.scorePlayers(playerScore, opponentScore);
-
-            this.ui.setScoreProgress({
-                player: Math.min(this.player.score/SCORE_TARGET*100, 100) + '%',
-                opponent: Math.min(this.getOpponent().score/SCORE_TARGET*100, 100) + '%'
-            })
         }
 
         this.ui.endRound(
@@ -119,14 +121,25 @@ class GameState {
         }
 
         this.ui.startGame();
+
+        if (this.getOpponent() instanceof LisetteAi) {
+            this.player.addToScore(15);
+        }
     }
 
     scorePlayers(playerScore, opponentScore) {
+        if (this.lisetteHasWon()) {
+            playerScore = 0;
+            opponentScore = 0;
+        }
+
         this.player.addToScore(playerScore);
         this.getOpponent().addToScore(opponentScore);
 
-        const playerHasWon = this.player.score >= this.scoreTarget;
-        const opponentHasWon = this.getOpponent().score >= this.scoreTarget;
+        let playerHasWon, opponentHasWon;
+
+        playerHasWon = this.player.score >= this.scoreTarget;
+        opponentHasWon = this.lisetteHasWon() || this.getOpponent().score >= this.scoreTarget;
 
         if (playerHasWon && opponentHasWon) {
             this.endGame(END_GAME_STATUS.TIE)
@@ -147,15 +160,22 @@ class GameState {
         const currentTurn = Math.ceil(this.counter / this.animationLength)
 
         if (this.getOpponent()) {
-            if ((this.counter + this.animationLength/2) % this.animationLength === 0) {
-                this.getOpponent().onActionOpportunity(currentTurn);
+            if ((this.counter + this.animationLength / 2) % this.animationLength === 0) {
+                this.getOpponent().onActionOpportunity(currentTurn, this.player);
+            }
+
+            if ( this.counter % this.animationLength === 0
+                && this.lisetteHasWon()
+            ) {
+                this.endRound()
+                return;
             }
         }
 
         this.ui.spinG(this.counter);
         if (this.counter == (this.animationLength) * this.maxLoops) {
             this.endRound();
-            return 1;
+            return;
         }
 
         setTimeout(this.spinG, 75);
@@ -165,11 +185,32 @@ class GameState {
         if (prediction === null) {
             return GRADE.MISS;
         }
-        if (prediction === this.maxLoops) {
-            return GRADE.PERFECT;
+
+        if (this.getOpponent() instanceof LisetteAi) {
+            switch (this.maxLoops - prediction) {
+                case 0:
+                    return 30
+                case 1:
+                    return 25
+                case 2:
+                case 3:
+                    return 20
+                case 4:
+                case 5:
+                case 6:
+                    return 10
+                case 7:
+                case 8:
+                case 9:
+                    return 5
+                default:
+                    return GRADE.FAIL
+            }
         }
 
         switch (this.maxLoops - prediction) {
+            case 0:
+                return GRADE.PERFECT
             case 1:
                 return GRADE.GREAT
             case 2:
